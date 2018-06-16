@@ -36,4 +36,5 @@ RUN ./post-install.sh ${OPENEMPI_HOME} ${OPENEMPI_VERSION}
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "boot.sh"]
+CMD ["./boot.sh", "run"]
+#docker run --name=openempi -ti -p 8080:8080 openempi
