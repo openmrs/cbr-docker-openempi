@@ -6,6 +6,7 @@ services:
             dockerfile: Dockerfile
         container_name: openempi
         ports:
-            - "8080:8080"
+            - "8083:8080"
+            - "3600:3600"
         stdin_open: true
         tty: true
