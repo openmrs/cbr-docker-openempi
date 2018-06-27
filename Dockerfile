@@ -15,12 +15,7 @@ RUN curl -L "https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_
     -o "/tmp/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz" && \
     tar -C /usr/local/bin -xzvf "/tmp/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz"
 
-RUN mkdir -p "${HOME_SHARE}/openxds/" \
-    && curl -L "http://www.openempi.org/openempi-downloads/file_download/?username=odysseas@sysnetint.com&filename=${OPENEMPI_ARCHIVE}" \
-            -o ${OPENEMPI_ARCHIVE} \
-    && tar -zxvf ${OPENEMPI_ARCHIVE} -C . \
-    && rm ${OPENEMPI_ARCHIVE}
-
+ADD ${OPENEMPI_ARCHIVE} ${OPENEMPI_HOME}
 RUN cp -R openempi-${OPENEMPI_VERSION}c/** . && \
     rm -R openempi-${OPENEMPI_VERSION}c
 
