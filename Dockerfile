@@ -29,7 +29,6 @@ RUN mkdir -p openempi-entity-${OPENEMPI_VERSION}c/bin
 
 #The post-install script assumes this doesn't, so remove it to please it
 RUN rm -R openempi-entity-${OPENEMPI_VERSION}c/fileRepository
-ADD configure_db.sql configure_db.sql
 
 ADD boot.sh boot.sh
 ADD post-install.sh post-install.sh
@@ -40,9 +39,7 @@ RUN chmod +x boot.sh && \
 
 RUN ./post-install.sh ${OPENEMPI_HOME} ${OPENEMPI_VERSION}
 
-EXPOSE 9092
 EXPOSE 8080
 EXPOSE 3600
 
 CMD ["./boot.sh", "run"]
-#docker run --name=openempi -ti -p 8080:8080 3600:3600 openempi
